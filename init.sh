@@ -9,7 +9,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 apt-get update
-apt-get install -qq curl unzip gitcat u -core ack-grep software-properties-common build-essential
+apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential
 
 git clone https://github.com/aasanchez/WebPro.git Provision
 
