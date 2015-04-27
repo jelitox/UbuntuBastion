@@ -3,8 +3,7 @@
 #
 # Configuracion de HostName
 #
-apt-get install -qq hostnamectl
-hostnamectl --set-hostname $HOSTNAME
+hostnamectl set-hostname $HOSTNAME
 sed -i -e '/ *#/d; /^ *$/d' /etc/hosts
 echo " " >> /etc/hosts
 echo "# Host IP Address" >> /etc/hosts
