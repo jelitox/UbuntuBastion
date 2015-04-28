@@ -5,8 +5,8 @@
 #
 echo "Setting Timezone & Locale to UTC & C.UTF-8"
 
-sudo ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-sudo locale-gen C.UTF-8
+ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+locale-gen C.UTF-8
 export LANG=C.UTF-8
 
 if [ $USER == "root" ]; then
