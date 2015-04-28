@@ -17,7 +17,7 @@ fi
 apt-get update
 apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential dbus
 
-git clone https://github.com/aasanchez/WebPro.git Provision
+git clone https://github.com/aasanchez/UbuntuBastion.git Provision
 
 for f in $(find Provision/hooks/* -maxdepth 1 | sort --numeric-sort); do
     . $f
