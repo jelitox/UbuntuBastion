@@ -13,3 +13,4 @@ echo "deb http://security.ubuntu.com/ubuntu trusty-security main universe multiv
 echo "deb http://archive.canonical.com/ubuntu trusty partner" >> /etc/apt/sources.list
 apt-get update
 apt-get update && apt-get -qq upgrade
+apt-get dist-upgrade

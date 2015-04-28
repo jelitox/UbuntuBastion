@@ -9,6 +9,11 @@ sudo ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 sudo locale-gen C.UTF-8
 export LANG=C.UTF-8
 
-echo "export LANG=C.UTF-8" >> /home/$USER/.bashrc
+if [ $USER == "root" ]; then
+    echo "export LANG=C.UTF-8" >> /root/.bashrc
+else
+    echo "export LANG=C.UTF-8" >> /home/$USER/.bashrc
+fi
+
 apt-get update
 apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential
