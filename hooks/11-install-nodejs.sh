@@ -1,5 +1,5 @@
 #!/bin/bash
-curl -sL https://deb.nodesource.com/setup | sudo bash -
+curl -sL https://deb.nodesource.com/setup | bash -
 apt-get install -qq nodejs
 
 packages=(bower gulp grunt)

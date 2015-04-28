@@ -16,4 +16,4 @@ else
 fi
 
 apt-get update
-apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential
+apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential nano
