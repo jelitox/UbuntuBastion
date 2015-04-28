@@ -5,12 +5,11 @@
 #
 
 rm /etc/apt/sources.list
-rm /etc/apt/sources.list
 touch /etc/apt/sources.list
-echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse" >> /etc/apt/sources.list
-echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
-echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
-echo "deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb $REPO trusty main universe multiverse" >> /etc/apt/sources.list
+echo "deb $REPO trusty-updates main universe multiverse" >> /etc/apt/sources.list
+echo "deb $REPO trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb http://security.ubuntu.com/ubuntu trusty-security main universe multiverse" >> /etc/apt/sources.list
+echo "deb http://archive.canonical.com/ubuntu trusty partner" >> /etc/apt/sources.list
 apt-get update
-sudo mv sources.list /etc/apt/sources.list
 apt-get update && apt-get -qq upgrade
