@@ -1,10 +1,6 @@
 #!/bin/bash
+echo -e "\033[32;40;7m Instalacion Node.js\033[0m"
 curl -sL https://deb.nodesource.com/setup | bash -
 apt-get install -qq nodejs
 
-packages=(bower gulp grunt)
-for item in ${packages[*]}
-do
-    echo "install $item"
-    npm install -g $item
-done
+npm install -g bower gulp grunt
