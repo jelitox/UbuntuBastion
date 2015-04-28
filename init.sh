@@ -6,9 +6,6 @@ HOSTNAME='staging'
 REPO='mirror://mirrors.ubuntu.com/mirrors.txt' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
 
-
-
-
 if [ "$(id -u)" != "0" ]; then
     echo "==== MUST BE RUN AS ROOT ===="
     exit 1

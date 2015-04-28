@@ -3,6 +3,7 @@
 #
 # Configuracion de HostName
 #
+echo "Cambiar HostName"
 hostnamectl set-hostname $HOSTNAME
 sed -i -e '/ *#/d; /^ *$/d' /etc/hosts
 echo " " >> /etc/hosts
