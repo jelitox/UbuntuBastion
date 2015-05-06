@@ -4,4 +4,4 @@ sleep 2
 curl -sL https://deb.nodesource.com/setup | bash -
 apt-get install -qq nodejs
 
-npm install -g bower gulp grunt
+npm install -g bower
