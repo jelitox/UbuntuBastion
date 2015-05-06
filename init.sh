@@ -1,6 +1,7 @@
 #!/bin/sh
 
 HOSTNAME='staging'
+REPO=$1
 
 #Respositorios
 REPO='mirror://mirrors.ubuntu.com/mirrors.txt' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
@@ -19,4 +20,3 @@ git clone https://github.com/aasanchez/UbuntuBastion.git Provision
 for f in $(find Provision/hooks/* -maxdepth 1 | sort --numeric-sort); do
     . $f
 done
-

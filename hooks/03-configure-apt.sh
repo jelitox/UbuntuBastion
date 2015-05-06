@@ -4,6 +4,7 @@
 # Configuramos los Sources
 #
 echo "\033[32;40;7m Configruacion de los nuevos respositorios\033[0m"
+sleep 2
 rm /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb $REPO trusty main universe multiverse" >> /etc/apt/sources.list

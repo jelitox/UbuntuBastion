@@ -1,6 +1,7 @@
 #!/bin/bash
 #Instalamos PHP
 echo "\033[32;40;7m Instalacion PHP\033[0m"
+sleep 2
 GROUP=$(id -Gn)
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 add-apt-repository -y ppa:ondrej/php5-5.6
