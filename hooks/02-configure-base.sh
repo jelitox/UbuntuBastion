@@ -3,7 +3,7 @@
 #
 # Configuracion de HostName
 #
-echo -e "\033[32;40;7m Setting Timezone & Locale to UTC & C.UTF-8\033[0m"
+echo "\033[32;40;7m Setting Timezone & Locale to UTC & C.UTF-8\033[0m"
 
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 locale-gen C.UTF-8
