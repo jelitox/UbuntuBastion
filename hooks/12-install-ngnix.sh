@@ -9,6 +9,11 @@ sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" 
 
 
 usermod -a -G www-data $USER
-sudo mkdir -p /var/www/$SITE
-sudo chown -R $USER:$USER /var/www/$SITE
-sudo chmod -R 755 /var/www/$SITE
+sudo rm -rf /var/www/html
+sudo mkdir -p /var/www
+sudo chown -R $USER:$USER /var/www
+sudo chmod -R 755 /var/www
+
+if [[ ! -z $REPO ]]; then
+    git clone $REPO /var/www
+fi
