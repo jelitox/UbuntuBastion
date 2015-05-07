@@ -1,6 +1,7 @@
 #!/bin/bash
 sleep 2
 echo "\033[32;40;7m Instalacion Nginx\033[0m"
+delay 2
 add-apt-repository -y ppa:nginx/stable
 apt-get update
 apt-get install -qq nginx
@@ -13,4 +14,5 @@ mkdir -p /var/www/$HOSTNAME
 chown -R $USER:$USER /var/www/$HOSTNAME
 chmod -R 755 /var/www
 echo "\033[32;40;7m Clonando $PROJECT\033[0m"
+delay 2
 git clone git@gitlab.com:juegaenlinea/$PROJECT.git /var/www/$HOSTNAME
