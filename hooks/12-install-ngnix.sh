@@ -13,6 +13,3 @@ rm -rf /var/www/html/
 mkdir -p /var/www/$HOSTNAME
 chown -R $USER:$USER /var/www/$HOSTNAME
 chmod -R 755 /var/www
-echo "\033[32;40;7m Clonando $PROJECT\033[0m"
-delay 2
-git clone git@gitlab.com:$GITUSER/$PROJECT.git /var/www/$HOSTNAME
