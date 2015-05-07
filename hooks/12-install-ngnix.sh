@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "\033[32;40;7m Instalacion Nginx\033[0m"
 sleep 2
+echo "\033[32;40;7m Instalacion Nginx\033[0m"
 add-apt-repository -y ppa:nginx/stable
 apt-get update
 apt-get install -qq nginx
@@ -12,5 +12,5 @@ rm -rf /var/www/html/
 mkdir -p /var/www/$HOSTNAME
 chown -R $USER:$USER /var/www/$HOSTNAME
 chmod -R 755 /var/www
-
+echo "\033[32;40;7m Clonando $REPO\033[0m"
 git clone $REPO /var/www/$HOSTNAME
