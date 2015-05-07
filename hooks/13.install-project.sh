@@ -8,4 +8,4 @@ echo "\033[1;31;40m Instalacion Dependencias\033[0m"
 delay 1
 cd /var/www/$HOSTNAME
 composer install
-bower install --allow-root
+bower install --allow-root --config.interactive=false
