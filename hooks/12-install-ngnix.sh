@@ -1,7 +1,6 @@
 #!/bin/bash
-sleep 2
 echo "\033[32;40;7m Instalacion Nginx\033[0m"
-delay 2
+sleep 2
 add-apt-repository -y ppa:nginx/stable
 apt-get update
 apt-get install -qq nginx
