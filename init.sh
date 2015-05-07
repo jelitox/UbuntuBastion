@@ -1,7 +1,7 @@
 #!/bin/sh
 
 HOSTNAME='staging'
-REPO=$1
+PROJECT=$1
 
 #Respositorios
 REPO='mirror://mirrors.ubuntu.com/mirrors.txt' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
