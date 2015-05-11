@@ -1,11 +1,10 @@
 #!/bin/sh
 
-HOSTNAME='staging'
-GITUSER=$1
-PROJECT=$2
+SITE='juegaenlinea'
+GIT='git@gitlab.com:juegaenlinea/WebSite.git'
 
 #Respositorios
-REPO='mirror://mirrors.ubuntu.com/mirrors.txt' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
+REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
 
 if [ "$(id -u)" != "0" ]; then

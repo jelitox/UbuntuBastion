@@ -9,6 +9,4 @@ sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" 
 
 usermod -a -G www-data $USER
 rm -rf /var/www/html/
-mkdir -p /var/www/$HOSTNAME
-chown -R $USER:$USER /var/www/$HOSTNAME
 chmod -R 755 /var/www
