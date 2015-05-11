@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SITE='juegaenlinea'
-GIT='git@gitlab.com:juegaenlinea/WebSite.git'
+GIT=$1
 
 #Respositorios
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
