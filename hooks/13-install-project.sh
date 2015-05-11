@@ -9,7 +9,7 @@ chown -R $USER:$USER /var/www/$SITE
 chmod -R 755 /var/www
 echo "\033[1;31;40m Clonando Repositorio\033[0m"
 sleep 1
-git clone $GIT /var/www/$SITE
+git clone git@gitlab.com:juegaenlinea/$GIT.git /var/www/$SITE
 echo "\033[1;31;40m Instalacion Dependencias\033[0m"
 sleep 1
 cd /var/www/$SITE
