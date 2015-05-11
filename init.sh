@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SITE='juegaenlinea'
-GIT=$1
+SITE=$1
+GIT=$2
 
 #Respositorios
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
