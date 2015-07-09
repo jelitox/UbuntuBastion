@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # 01-configure-apt
 #
 # Configuracion de HostName
 #
-echo "\033[32;40;7m Cambiar HostName\033[0m"
+echo -e "\033[32;40;7m Cambiar HostName \033[0m"
 sleep 2
-hostnamectl set-hostname $HOSTNAME
+hostnamectl set-hostname $PROYECTO
 sed -i -e '/ *#/d; /^ *$/d' /etc/hosts
 echo " " >> /etc/hosts
 echo "# Host IP Address" >> /etc/hosts
-echo "127.0.0.1 $HOSTNAME" >> /etc/hosts
+echo "127.0.0.1 $PROYECTO" >> /etc/hosts

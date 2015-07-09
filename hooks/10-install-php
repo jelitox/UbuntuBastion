@@ -1,13 +1,19 @@
-#!/bin/bash
-#Instalamos PHP
-echo "\033[32;40;7m Instalacion PHP\033[0m"
+#!/usr/bin/env bash
+echo -e "\033[32;40;7m Instalacion PHP \033[0m"
 sleep 2
 GROUP=$(id -Gn)
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 add-apt-repository -y ppa:ondrej/php5-5.6
 apt-key update
-apt-get update
-apt-get install -qq php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-memcached php5-imagick php5-intl
+aptitude update
+aptitude install -y php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt \
+php5-memcached php5-imagick php5-intl php-pear php5-imap php5-memcache php5-ming php5-ps php5-pspell php5-recode \
+php5-snmp php5-tidy php5-xmlrpc php5-xsl snmp
+
+php5enmod mcrypt
+aptitude install -y php-apc
+service php5-fpm reload
+
 sed -i "s/listen =.*/listen = 127.0.0.1:9000/" /etc/php5/fpm/pool.d/www.conf
 sed -i "s/;listen.allowed_clients/listen.allowed_clients/" /etc/php5/fpm/pool.d/www.conf
 sed -i "s/user = www-data/user = $USER/" /etc/php5/fpm/pool.d/www.conf
@@ -21,6 +27,6 @@ sed -i "s/;date.timezone =.*/date.timezone = \"UTC\"/" /etc/php5/fpm/php.ini
 sed -i "s/;date.timezone =.*/date.timezone = \"UTC\"/" /etc/php5/cli/php.ini
 service php5-fpm restart
 
-#Instalamos Composer
+echo -e "\033[1;31;40m Instalacion Composer \033[0m"
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer

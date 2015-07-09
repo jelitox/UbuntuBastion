@@ -1,3 +1,2 @@
-# WebPro
-
-wget https://raw.githubusercontent.com/aasanchez/UbuntuBastion/master/init.sh --no-check-certificate
+# ServerBastion
+sudo apt-get update && sudo apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential dbus nano aptitude && git clone https://gitlab.com/aasanchez/ServerBastion.git
