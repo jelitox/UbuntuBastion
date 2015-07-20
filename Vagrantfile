@@ -15,13 +15,13 @@ Vagrant.configure(2) do |config|
         config.hostmanager.include_offline = false
     end
 
-    config.vm.hostname = "juegaenlinea.net"
+    config.vm.hostname = "vagrant"
 
     config.vm.network :private_network, ip: "127.0.0.10"
     config.vm.network :forwarded_port, guest: 80, host: 8000
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = "juegaenlinea.net"
+        vb.name = "vagrant"
         # Set server cpus
         vb.customize ["modifyvm", :id, "--cpus", 1]
         # ServerBastiont server memory
