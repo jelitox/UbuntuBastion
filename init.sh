@@ -5,17 +5,15 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-DOMAIN=''
+HOSTNAME='tomhorn'
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
-IFS='.' read -a HOSTNAME <<< "${DOMAIN}"
-PROYECTO=${HOSTNAME[0]}
 
-if [ -f credentials/id_rsa ]; then
+if [ -f id_rsa ]; then
     if [ ! -d .ssh ]; then
         mkdir .ssh
     fi
     rm .ssh/id_rsa
-    mv credentials/id_rsa .ssh/id_rsa
+    mv id_rsa .ssh/id_rsa
     chmod 400 .ssh/id_rsa
 else
     ssh-keygen -t rsa -b 4096 -N "" -C "servers@$DOMAIN" -f deploy_key
