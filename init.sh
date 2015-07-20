@@ -5,7 +5,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-HOSTNAME='tomhorn'
+HOSTNAME='bastion'
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
 if [ -f id_rsa ]; then
@@ -16,7 +16,7 @@ if [ -f id_rsa ]; then
     mv id_rsa .ssh/id_rsa
     chmod 400 .ssh/id_rsa
 else
-    ssh-keygen -t rsa -b 4096 -N "" -C "servers@$DOMAIN" -f deploy_key
+    ssh-keygen -t rsa -b 4096 -N "" -C "servers@$HOSTNAME" -f deploy_key
     echo "Copie el siguiente public key en un sitio seguro"
     echo "Agrege como deploy key para el proyecto que desea instalar"
     echo ""
