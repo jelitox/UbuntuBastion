@@ -8,20 +8,13 @@ Vagrant.configure(2) do |config|
     config.vm.define "ServerBastion" do |vapro|
     end
 
-    if Vagrant.has_plugin?("vagrant-hostmanager")
-        config.hostmanager.enabled = true
-        config.hostmanager.manage_host = true
-        config.hostmanager.ignore_private_ip = false
-        config.hostmanager.include_offline = false
-    end
-
     config.vm.hostname = "bastion"
 
-    config.vm.network :private_network, ip: "127.0.0.10"
-    config.vm.network :forwarded_port, guest: 80, host: 8000
+    config.vm.network :public_network, ip: "192.168.1.135"
+    config.vm.network :forwarded_port, guest: 80, host: 8000,auto_correct: true
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = "bastion"
+        vb.name = "ubuntuBastion"
         # Set server cpus
         vb.customize ["modifyvm", :id, "--cpus", 1]
         # ServerBastiont server memory

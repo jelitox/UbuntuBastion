@@ -13,9 +13,12 @@ if [ -f id_rsa ]; then
         mkdir .ssh
     fi
     rm .ssh/id_rsa
-    mv id_rsa .ssh/id_rsa
+    cp id_rsa .ssh/id_rsa
     chmod 400 .ssh/id_rsa
 else
+    if [ -f deploy_key ]; then
+        rm deploy_key*
+    fi
     ssh-keygen -t rsa -b 4096 -N "" -C "servers@$HOSTNAME" -f deploy_key
     echo "Copie el siguiente public key en un sitio seguro"
     echo "Agrege como deploy key para el proyecto que desea instalar"
@@ -24,7 +27,7 @@ else
     cat deploy_key.pub
     echo ""
     echo ""
-    read -p "Presione Enter para continuar... " -n1 -s
+    #read -p "Presione Enter para continuar... " -n1 -s
 fi
 
 for hook in $(find hooks/* -maxdepth 1 | sort --numeric-sort); do
