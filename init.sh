@@ -13,8 +13,8 @@ if [ -f id_rsa ]; then
         mkdir .ssh
     fi
     rm .ssh/id_rsa
-    cp id_rsa .ssh/id_rsa
-    chmod 400 .ssh/id_rsa
+    cp id_rsa ~/.ssh/id_rsa
+    chmod 400 ~/.ssh/id_rsa
 else
     if [ -f deploy_key ]; then
         rm deploy_key*

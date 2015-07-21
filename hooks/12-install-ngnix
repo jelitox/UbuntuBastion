@@ -5,6 +5,8 @@ rm -rf /etc/nginx/
 rm -rf /var/www/
 # Limpiamos la instalacion anterior
 
+
+
 echo "\033[32;40;7m Instalacion Nginx\033[0m"
 sleep 2
 wget http://nginx.org/keys/nginx_signing.key
@@ -12,3 +14,52 @@ apt-key add nginx_signing.key
 echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list.d/nginx.list
 aptitude update
 aptitude install nginx
+
+usermod -a -G www-data $USER
+mkdir -p /var/www/logs/
+chmod -R 755 /var/www
+echo "404" >> /var/www/404.html
+touch /var/www/logs/access.log
+touch /var/www/logs/error.log
+
+cat <<EOF >/etc/nginx/conf.d/default.conf
+server {
+    listen 80;
+
+    root   /var/www;
+    index  index.html;
+
+    server_name localhost;
+    charset utf-8;
+    access_log /var/www/logs/access.log;
+	error_log  /var/www/logs/error.log error;
+
+    error_page 404 /var/www/404.html;
+
+    location = /favicon.ico { log_not_found off; access_log off; }
+    location = /robots.txt  { log_not_found off; access_log off; }
+}
+EOF
+
+cat <<EOF >/var/www/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-12 title">
+        <h1>Nginx Server</h1>
+      </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </body>
+</html>
+EOF
+
+service nginx restart
