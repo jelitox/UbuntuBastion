@@ -13,8 +13,8 @@ php5-recode php5-snmp php5-tidy php5-xmlrpc php5-xsl snmp
 php5enmod mcrypt
 aptitude install -y php-apc
 
-sed -i "s/listen =.*/listen = 127.0.0.1:9000" /etc/php5/fpm/pool.d/www.conf
-sed -i "s/;listen.allowed_clients/listen.allowed_clients/" /etc/php5/fpm/pool.d/www.conf
+sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
+sed -i 's/;listen.allowed_clients/listen.allowed_clients/' /etc/php5/fpm/pool.d/www.conf
 sed -i "s/listen\.owner.*/listen.owner = www-data/" /etc/php5/fpm/pool.d/www.conf
 sed -i "s/listen\.group.*/listen.group = www-data/" /etc/php5/fpm/pool.d/www.conf
 sed -i "s/;listen\.mode.*/listen.mode = 0666/" /etc/php5/fpm/pool.d/www.conf
