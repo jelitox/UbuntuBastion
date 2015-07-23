@@ -5,6 +5,8 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+USUARIO='vagrant'
+
 HOSTNAME='bastion'
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 

@@ -15,3 +15,8 @@ else
     echo "export LANG=C.UTF-8" >> /home/$USER/.bashrc
 fi
 aptitude install -y ntp ntpdate
+service apparmor stop
+update-rc.d -f apparmor remove
+aptitude -y remove apparmor apparmor-utils
+sudo useradd -g www-data vagrant
+sudo useradd -g www-data root
