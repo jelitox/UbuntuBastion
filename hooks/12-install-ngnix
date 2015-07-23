@@ -5,13 +5,13 @@ rm -rf /etc/nginx/
 rm -rf /var/www/
 # Limpiamos la instalacion anterior
 
-echo "\033[32;40;7m Instalacion Nginx Repositorios\033[0m"
+echo -e "\033[32;40;7m Instalacion Nginx Repositorios\033[0m"
 sleep 2
 
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 rm nginx_signing.key
-echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list.d/nginx.list
+echo -e "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list.d/nginx.list
 aptitude update
 aptitude install -y nginx
 
@@ -28,7 +28,7 @@ chmod -R 755 /var/www/logs
 touch /var/www/logs/access.log
 touch /var/www/logs/error.log
 
-echo "\033[35;40;7m Generacion de Certificados SSL (AutoFirmados)\035[0m"
+echo -e "\033[35;40;7m Generacion de Certificados SSL (AutoFirmados)\035[0m"
 SSL_DIR="/etc/ssl"
 DOMAIN="*.xip.io"
 PASSPHRASE="ubuntubastion"
@@ -47,7 +47,7 @@ sudo openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/ss
 sudo openssl x509 -req -days 365 -in "$SSL_DIR/ssl.csr" -signkey "$SSL_DIR/ssl.key" -out "$SSL_DIR/ssl.crt"
 
 
-echo "\033[35;40;7m Verificamos si esta PHP Instalado\035[0m"
+echo -e "\033[35;40;7m Verificamos si esta PHP Instalado\035[0m"
 php -v > /dev/null 2>&1
 PHP_IS_INSTALLED=$?
 
