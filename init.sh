@@ -32,6 +32,6 @@ else
     #read -p "Presione Enter para continuar... " -n1 -s
 fi
 
-for hook in $(find hooks/* -maxdepth 1 | sort --numeric-sort); do
+for hook in $(find hooks.d/* -maxdepth 1 | sort --numeric-sort); do
     . $hook
 done
