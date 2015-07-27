@@ -7,6 +7,9 @@ aptitude install -y newrelic-sysmond
 nrsysmond-config --set license_key=$NR_LICENCE
 /etc/init.d/newrelic-sysmond start
 
+php -v > /dev/null 2>&1
+PHP_IS_INSTALLED=$?
+
 if [[ $PHP_IS_INSTALLED -eq 0 ]]; then
     aptitude install -y newrelic-php5
     newrelic-install install
