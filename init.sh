@@ -10,6 +10,8 @@ USUARIO='vagrant'
 HOSTNAME='bastion'
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
+NR_LICENCE= #New Relic Licence
+
 if [ -f id_rsa ]; then
     if [ ! -d .ssh ]; then
         mkdir .ssh
