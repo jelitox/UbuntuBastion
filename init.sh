@@ -34,6 +34,48 @@ else
     #read -p "Presione Enter para continuar... " -n1 -s
 fi
 
-for hook in $(find hooks.d/* -maxdepth 1 | sort --numeric-sort); do
-    . $hook
-done
+####
+# OS Configurations
+##########
+
+# Configuracion de Repositorios
+. hooks.d/01-configure-apt
+
+# Paquetes Basicos
+. hooks.d/02-configure-base
+
+# Configure HostName
+. hooks.d/03-configure-hostname
+
+
+####
+# Languages
+##########
+
+# Install PHP
+. hooks.d/10-install-php
+
+# Install Node.js
+. hooks.d/11-install-nodejs
+
+
+####
+# Web Servers
+##########
+
+# Install Node.js
+. hooks.d/12-install-ngnix
+
+
+####
+# Analitics
+##########
+
+# Install NewRelic
+#. hooks.d/13-newrelic
+
+# Install NewRelic
+#. hooks.d/14-loggy
+
+# Install NewRelic
+. hooks.d/99-project

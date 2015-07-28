@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 echo -e "\033[32;40;7m Instalacion de NewRelic\033[0m"
 echo deb http://apt.newrelic.com/debian/ newrelic non-free >> /etc/apt/sources.list.d/newrelic.list
 wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
