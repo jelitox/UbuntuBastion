@@ -2,3 +2,6 @@ id_rsa
 .vagrant/
 deploy*
 *.key
+configure-linux.sh
+configure-nginx.sh
+jel_idrsa

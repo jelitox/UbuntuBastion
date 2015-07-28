@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-# Limpiamos la instalacion anterior
-aptitude purge -y nginx*
-rm -rf /etc/nginx/
-rm -rf /var/www/
-# Limpiamos la instalacion anterior
-
 echo -e "\033[32;40;7m Instalacion Nginx Repositorios\033[0m"
 sleep 2
 

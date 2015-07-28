@@ -7,6 +7,8 @@ echo -e "\033[32;40;7m Setting Timezone & Locale to UTC & C.UTF-8 \033[0m"
 sleep 2
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
+aptitude update
+aptitude install -y curl unzip git-core ack-grep software-properties-common build-essential dbus nano aptitude
 aptitude install -y locales
 aptitude install -y util-linux-locales
 /usr/sbin/locale-gen
@@ -27,3 +29,7 @@ update-rc.d -f apparmor remove
 aptitude -y remove apparmor apparmor-utils
 sudo useradd -g www-data vagrant
 sudo useradd -g www-data root
+
+# Definimos que las actualizaciones de seguridad puedan instalarse automaticamente
+aptitude install -y unattended-upgrades
+echo "APT::Periodic::Unattended-Upgrade \"1\";" >> /etc/apt/apt.conf.d/10periodic
