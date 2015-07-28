@@ -10,6 +10,9 @@ nrsysmond-config --set license_key=$NR_LICENCE
 php -v > /dev/null 2>&1
 PHP_IS_INSTALLED=$?
 
+nginx -v > /dev/null 2>&1
+NGINX_IS_INSTALLED=$?
+
 if [[ $PHP_IS_INSTALLED -eq 0 ]]; then
     aptitude install -y newrelic-php5
     newrelic-install install
@@ -26,7 +29,7 @@ if [ $NGINX_IS_INSTALLED -eq 0 ]; then
     aptitude install -y nginx-nr-agent
     sed -i "s/newrelic_license_key=YOUR_LICENSE_KEY_HERE/newrelic_license_key=$NR_LICENCE/" /etc/nginx-nr-agent/nginx-nr-agent.ini
     echo "[source1]" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
-    echo "name=nginx" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
+    echo "name=$HOSTNAME" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
     echo "url=http://localhost/nginx_status" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
     service nginx restart
 fi

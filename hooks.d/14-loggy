@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+echo -e "\033[32;40;7m Instalacion Loggy\033[0m"
+curl -O https://www.loggly.com/install/configure-linux.sh
+sudo bash configure-linux.sh -a juegaenlinea -t 5d2c64ec-02b2-46ba-b8f1-0acb0d5e65dc -u aasanchez
+nginx -v > /dev/null 2>&1
+NGINX_IS_INSTALLED=$?
+if [ $NGINX_IS_INSTALLED -eq 0 ]; then
+    curl -O https://www.loggly.com/install/configure-nginx.sh
+    sudo bash configure-nginx.sh -a juegaenlinea -t 5d2c64ec-02b2-46ba-b8f1-0acb0d5e65dc -u aasanchez
+fi
