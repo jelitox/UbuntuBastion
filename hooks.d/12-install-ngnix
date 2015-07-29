@@ -21,7 +21,7 @@ chmod -R 755 /var/www/logs
 touch /var/www/logs/access.log
 touch /var/www/logs/error.log
 
-echo -e "\033[35;40;7m Generacion de Certificados SSL (AutoFirmados)\035[0m"
+echo "-----Generacion de Certificados SSL (AutoFirmados)"
 SSL_DIR="/etc/ssl"
 DOMAIN="*.xip.io"
 PASSPHRASE="ubuntubastion"
@@ -40,7 +40,7 @@ sudo openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/ss
 sudo openssl x509 -req -days 365 -in "$SSL_DIR/ssl.csr" -signkey "$SSL_DIR/ssl.key" -out "$SSL_DIR/ssl.crt"
 
 
-echo -e "\033[35;40;7m Verificamos si esta PHP Instalado\035[0m"
+echo "------Verificamos si esta PHP Instalado"
 php -v > /dev/null 2>&1
 PHP_IS_INSTALLED=$?
 

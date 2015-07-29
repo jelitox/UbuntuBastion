@@ -10,8 +10,6 @@ USUARIO='vagrant'
 HOSTNAME='bastion'
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
-NR_LICENCE= #New Relic Licence
-
 if [ -f id_rsa ]; then
     if [ ! -d .ssh ]; then
         mkdir -p  ~/.ssh
@@ -43,7 +41,7 @@ fi
 . hooks.d/10-install-php
 
 # Install Node.js
-#. hooks.d/11-install-nodejs
+. hooks.d/11-install-nodejs
 
 
 ####
@@ -55,7 +53,7 @@ fi
 
 
 ####
-# Web Servers
+# Database
 ##########
 
 # Install Node.js
@@ -67,10 +65,10 @@ fi
 ##########
 
 # Install NewRelic
-#. hooks.d/75-newrelic
+. hooks.d/75-newrelic
 
 # Install NewRelic
-#. hooks.d/76-loggy
+. hooks.d/76-loggy
 
 # Install NewRelic
 . hooks.d/99-project

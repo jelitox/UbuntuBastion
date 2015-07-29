@@ -1,4 +1,6 @@
 echo -e "\033[32;40;7m Instalacion de NewRelic\033[0m"
+sleep 2
+NR_LICENCE= #New Relic Licence
 echo deb http://apt.newrelic.com/debian/ newrelic non-free >> /etc/apt/sources.list.d/newrelic.list
 wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
 aptitude update
