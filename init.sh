@@ -9,16 +9,15 @@ REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.ar
 
 HOSTNAME='bastion.dev'
 
-NR_LICENCE=
+NR_LICENCE=5688bd0a93236d73c99eb3275a019f174fc61b5c
 
-PGSQL_USER=""
-PGSQL_PASS=""
-PGSQL_DDBB=""
+PGSQL_USER="vagrant"
+PGSQL_PASS="vagrant"
+PGSQL_DDBB="vagrant"
 
-LOGGLY_ACCOUNT=""
-LOGGLY_USER=""
-LOGGLY_KEY=""
-
+LOGGLY_ACCOUNT="juegaenlinea"
+LOGGLY_USER="aasanchez"
+LOGGLY_KEY="5d2c64ec-02b2-46ba-b8f1-0acb0d5e65dc"
 
 if [ -f id_rsa ]; then
     if [ ! -d ~/.ssh ]; then
@@ -59,7 +58,7 @@ fi
 ##########
 
 # Install Ngnix
-. hooks.d/27-ngnix
+. hooks.d/27-nginx
 
 
 ####
