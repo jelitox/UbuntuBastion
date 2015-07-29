@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # 01-configure-apt
 #
 # Configuramos los Sources
@@ -6,6 +5,7 @@
 echo -e "\033[32;40;7m Configruacion de los nuevos respositorios \033[0m"
 sleep 2
 rm /etc/apt/sources.list
+rm /etc/apt/sources.list.d/*
 echo "deb $REPO trusty main universe multiverse" >> /etc/apt/sources.list
 echo "deb $REPO trusty-updates main universe multiverse" >> /etc/apt/sources.list
 echo "deb $REPO trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list

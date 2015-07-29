@@ -5,3 +5,4 @@ deploy*
 configure-linux.sh
 configure-nginx.sh
 jel_idrsa
+.DS_Store

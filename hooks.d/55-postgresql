@@ -1,0 +1,7 @@
+echo -e "\033[32;40;7m Instalacion PostGresql Repositorios\033[0m"
+sleep 2
+echo -e "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/postgresql.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+aptitude update
+aptitude install -y postgresql-9.4
+psql -c "CREATE USER admin WITH PASSWORD 'test101';"

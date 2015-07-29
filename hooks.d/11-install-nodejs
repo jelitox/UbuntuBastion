@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-echo -e "\033[32;40;7m Instalacion Node.js \033[0m"
-sleep 2
-curl -sL https://deb.nodesource.com/setup | bash -
-aptitude install -y nodejs
-echo -e "\033[1;31;40m Instalacion de Paquetes NPM \033[0m"
-npm install -g bower grunt gulp

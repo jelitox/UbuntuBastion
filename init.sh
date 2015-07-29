@@ -20,7 +20,7 @@ if [ -f id_rsa ]; then
 fi
 
 ####
-# Base Items
+# OS Configurations
 ##########
 
 # Configuracion de Repositorios
@@ -34,30 +34,38 @@ fi
 
 
 ####
-# Lenguajes de Programación
+# Languages
 ##########
 
-# PHP
+# Install PHP
 . hooks.d/25-install-php
 
-# Node.js
+# Install Node.js
 . hooks.d/26-install-nodejs
 
 
 ####
-# Servidor Web
+# Web Servers
 ##########
 
-# Nginx
-. hooks.d/27-install-nginx
+# Install Ngnix
+. hooks.d/27-install-ngnix
 
 
 ####
-# Herramientas de Monitoreo y Analisis
+# Database
 ##########
 
-# New relic
+# Install PostGresql
+#. hooks.d/55-postgresql
+
+
+####
+# Analitics
+##########
+
+# Install NewRelic
 . hooks.d/80-newrelic
 
-# Loggly
-. hooks.d/81-loggly
+# Install NewRelic
+. hooks.d/81-loggy
