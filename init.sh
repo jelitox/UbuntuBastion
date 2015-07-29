@@ -4,11 +4,21 @@ if [ "$(id -u)" != "0" ]; then
     echo "==== MUST BE RUN AS ROOT ===="
     exit 1
 fi
-
-USUARIO='vagrant'
-
-HOSTNAME='bastion'
+# Server Configuration
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
+
+HOSTNAME='bastion.dev'
+
+NR_LICENCE=
+
+PGSQL_USER=""
+PGSQL_PASS=""
+PGSQL_DDBB=""
+
+LOGGLY_ACCOUNT=""
+LOGGLY_USER=""
+LOGGLY_KEY=""
+
 
 if [ -f id_rsa ]; then
     if [ ! -d ~/.ssh ]; then
@@ -24,13 +34,13 @@ fi
 ##########
 
 # Configuracion de Repositorios
-. hooks.d/01-configure-apt
+. hooks.d/01-apt
 
 # Paquetes Basicos
-. hooks.d/02-configure-base
+. hooks.d/02-OS-base
 
 # Set Hostname
-. hooks.d/03-configure-hostname
+. hooks.d/03-hostname
 
 
 ####
@@ -38,10 +48,10 @@ fi
 ##########
 
 # Install PHP
-. hooks.d/25-install-php
+. hooks.d/25-php
 
 # Install Node.js
-. hooks.d/26-install-nodejs
+. hooks.d/26-nodejs
 
 
 ####
@@ -49,7 +59,7 @@ fi
 ##########
 
 # Install Ngnix
-. hooks.d/27-install-ngnix
+. hooks.d/27-ngnix
 
 
 ####
@@ -57,7 +67,7 @@ fi
 ##########
 
 # Install PostGresql
-#. hooks.d/55-postgresql
+. hooks.d/55-postgresql
 
 
 ####
@@ -68,4 +78,4 @@ fi
 . hooks.d/80-newrelic
 
 # Install NewRelic
-. hooks.d/81-loggy
+. hooks.d/81-loggly

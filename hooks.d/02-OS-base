@@ -10,17 +10,6 @@ aptitude update
 aptitude install -y curl unzip git-core ack-grep software-properties-common build-essential dbus nano aptitude
 aptitude install -y locales
 aptitude install -y util-linux-locales
-/usr/sbin/locale-gen
-
-/usr/sbin/update-locale LANG=C
-locale-gen C.UTF-8
-export LANG=C.UTF-8
-
-if [ "$USER" == "root" ]; then
-    echo "export LANG=C.UTF-8" >> /root/.bashrc
-else
-    echo "export LANG=C.UTF-8" >> /home/$USER/.bashrc
-fi
 
 aptitude install -y ntp ntpdate
 service apparmor stop
