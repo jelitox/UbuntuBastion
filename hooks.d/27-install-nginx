@@ -1,0 +1,160 @@
+#!/usr/bin/env bash
+echo -e "\033[32;40;7m Instalacion Nginx Repositorios\033[0m"
+sleep 2
+
+wget http://nginx.org/keys/nginx_signing.key
+apt-key add nginx_signing.key
+rm nginx_signing.key
+echo -e "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list.d/nginx.list
+aptitude update
+aptitude install -y nginx
+
+#
+# Permisos de usuario a archivos
+#
+mkdir -p /var/www/logs/
+sudo adduser $USER www-data
+sudo chgrp -R www-data /var/www
+sudo chmod -R g+rw /var/www
+sudo chmod g+s /var/www
+
+chmod -R 755 /var/www/logs
+touch /var/www/logs/access.log
+touch /var/www/logs/error.log
+
+echo -e "\033[35;40;7m Generacion de Certificados SSL (AutoFirmados)\035[0m"
+SSL_DIR="/etc/ssl"
+DOMAIN="*.xip.io"
+PASSPHRASE="ubuntubastion"
+SUBJ="
+C=US
+ST=Connecticut
+O=Vaprobash
+localityName=New Haven
+commonName=$DOMAIN
+organizationalUnitName=
+emailAddress=
+"
+sudo mkdir -p "$SSL_DIR"
+sudo openssl genrsa -out "$SSL_DIR/ssl.key" 1024
+sudo openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/ssl.key" -out "$SSL_DIR/ssl.csr" -passin pass:$PASSPHRASE
+sudo openssl x509 -req -days 365 -in "$SSL_DIR/ssl.csr" -signkey "$SSL_DIR/ssl.key" -out "$SSL_DIR/ssl.crt"
+
+
+echo -e "\033[35;40;7m Verificamos si esta PHP Instalado\035[0m"
+php -v > /dev/null 2>&1
+PHP_IS_INSTALLED=$?
+
+function create_server_block {
+    PHP_NO_SSL=""
+    PHP_WITH_SSL=""
+
+    if [[ $PHP_IS_INSTALLED -eq 0 ]]; then
+
+
+read -d '' PHP_NO_SSL <<EOF
+        # pass the PHP scripts to php5-fpm
+        # Note: \.php$ is susceptible to file upload attacks
+        # Consider using: "location ~ ^/(index|app|app_dev|config)\.php(/|$) {"
+        location ~ \.php$ {
+            try_files \$uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            # With php5-fpm:
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+            fastcgi_param LARA_ENV local; # Environment variable for Laravel
+            fastcgi_param HTTPS off;
+        }
+EOF
+
+read -d '' PHP_WITH_SSL <<EOF
+        # pass the PHP scripts to php5-fpm
+        # Note: \.php$ is susceptible to file upload attacks
+        # Consider using: "location ~ ^/(index|app|app_dev|config)\.php(/|$) {"
+        location ~ \.php$ {
+            try_files \$uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            # With php5-fpm:
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+            fastcgi_param LARA_ENV local; # Environment variable for Laravel
+            fastcgi_param HTTPS on;
+        }
+EOF
+    fi
+
+
+
+# Main Nginx Server Block Config
+cat <<EOF
+    server {
+        listen 80;
+        root /var/www;
+        index index.html index.php;
+
+        server_name _;
+        access_log /var/www/logs/access.log;
+        error_log  /var/www/logs/error.log error;
+        charset utf-8;
+        location / {
+            try_files \$uri \$uri/ /index.php?\$query_string;
+        }
+        location = /favicon.ico { log_not_found off; access_log off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+        error_page 404 /index.php;
+        $PHP_NO_SSL
+        # Deny .htaccess file access
+        location ~ /\.ht {
+            deny all;
+        }
+        location = /nginx_status {
+            stub_status on;
+            allow 127.0.0.1;
+            deny all;
+        }
+
+    }
+    server {
+        listen 443;
+        ssl on;
+        ssl_certificate     /etc/ssl/ssl.crt;
+        ssl_certificate_key /etc/ssl/ssl.key;
+        root /var/www;
+        index index.html index.php;
+        # Make site accessible from ...
+        server_name _;
+        access_log /var/www/logs/access.log;
+        error_log  /var/www/logs/error.log error;
+        charset utf-8;
+        location / {
+            try_files \$uri \$uri/ /index.php?\$query_string;
+        }
+        location = /favicon.ico { log_not_found off; access_log off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+        error_page 404 /index.php;
+        $PHP_WITH_SSL
+        # Deny .htaccess file access
+        location ~ /\.ht {
+            deny all;
+        }
+        location = /nginx_status {
+            stub_status on;
+            allow 127.0.0.1;
+            deny all;
+        }
+    }
+EOF
+}
+
+> /etc/nginx/conf.d/default.conf
+create_server_block > /etc/nginx/conf.d/default.conf
+
+cat <<EOF >/var/www/index.php
+<?php phpinfo(); ?>
+EOF
+
+service php5-fpm restart && service nginx restart
