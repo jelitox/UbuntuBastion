@@ -1,0 +1,8 @@
+echo -e "\033[32;40;7m Configuracion SSH \033[0m"
+echo "" && sleep 2
+echo -e "\033[31;47;7m Cambiar Puerto SSH \033[0m"
+echo "" && sleep 1
+if [ -z "$SSH_PORT" ]; then
+	SSH_PORT=$((RANDOM%9000+2000))
+fi
+sed -i "s/Port.*/Port $SSH_PORT/g" /etc/ssh/sshd_config

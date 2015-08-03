@@ -9,15 +9,18 @@ REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.ar
 
 HOSTNAME='bastion.dev'
 
-NR_LICENCE=5688bd0a93236d73c99eb3275a019f174fc61b5c
+NR_LICENCE=
 
-PGSQL_USER="vagrant"
-PGSQL_PASS="vagrant"
-PGSQL_DDBB="vagrant"
+PGSQL_USER=""
+PGSQL_PASS=""
+PGSQL_DDBB=""
 
-LOGGLY_ACCOUNT="juegaenlinea"
-LOGGLY_USER="aasanchez"
-LOGGLY_KEY="5d2c64ec-02b2-46ba-b8f1-0acb0d5e65dc"
+LOGGLY_ACCOUNT=""
+LOGGLY_USER=""
+LOGGLY_KEY=""
+
+SSH_PORT="2222"
+
 
 if [ -f id_rsa ]; then
     if [ ! -d ~/.ssh ]; then
@@ -27,6 +30,7 @@ if [ -f id_rsa ]; then
     cp id_rsa ~/.ssh/id_rsa
     chmod 400 ~/.ssh/id_rsa
 fi
+
 
 ####
 # OS Configurations
@@ -40,6 +44,9 @@ fi
 
 # Set Hostname
 . hooks.d/03-hostname
+
+# Set ssh
+. hooks.d/04-ssh
 
 
 ####
@@ -78,3 +85,6 @@ fi
 
 # Install NewRelic
 . hooks.d/81-loggly
+
+# Install NewRelic
+. hooks.d/99-final
