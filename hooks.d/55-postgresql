@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo -e "\033[32;40;7m Instalacion PostGresql Repositorios\033[0m"
 sleep 2
 

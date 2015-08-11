@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # 01-configure-apt
 #
 # Configuramos los Sources

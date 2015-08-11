@@ -19,7 +19,7 @@ LOGGLY_ACCOUNT=""
 LOGGLY_USER=""
 LOGGLY_KEY=""
 
-SSH_PORT="2222"
+SSH_PORT=""
 
 
 if [ -f id_rsa ]; then
@@ -30,7 +30,6 @@ if [ -f id_rsa ]; then
     cp id_rsa ~/.ssh/id_rsa
     chmod 400 ~/.ssh/id_rsa
 fi
-
 
 ####
 # OS Configurations
@@ -46,7 +45,7 @@ fi
 . hooks.d/03-hostname
 
 # Set ssh
-. hooks.d/04-ssh
+#. hooks.d/04-ssh
 
 
 ####
@@ -73,7 +72,7 @@ fi
 ##########
 
 # Install PostGresql
-. hooks.d/55-postgresql
+#. hooks.d/55-postgresql
 
 
 ####
@@ -81,10 +80,17 @@ fi
 ##########
 
 # Install NewRelic
-. hooks.d/80-newrelic
+#. hooks.d/80-newrelic
 
 # Install NewRelic
-. hooks.d/81-loggly
+#. hooks.d/81-loggly
 
-# Install NewRelic
-. hooks.d/99-final
+
+####
+# Auditorias
+##########
+# Install Lynis
+. hooks.d/98-lynis
+
+# Cierre
+#. hooks.d/99-final

@@ -22,11 +22,11 @@ if [ -n "$NR_LICENCE" ]; then
         aptitude install -y newrelic-php5
         newrelic-install install
         echo "Licencia"
-        #sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/fpm/conf.d/newrelic.ini
-        #sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/cli/conf.d/newrelic.ini
+        sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/fpm/conf.d/newrelic.ini
+        sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/cli/conf.d/newrelic.ini
         echo "App name"
-        #sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOSTNAME\"/" /etc/php5/fpm/conf.d/newrelic.ini
-        #sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOSTNAME\"/" /etc/php5/cli/conf.d/newrelic.ini
+        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOSTNAME\"/" /etc/php5/fpm/conf.d/newrelic.ini
+        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOSTNAME\"/" /etc/php5/cli/conf.d/newrelic.ini
         service php5-fpm restart
     fi
 

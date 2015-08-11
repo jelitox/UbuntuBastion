@@ -5,3 +5,10 @@ echo "Host $HOSTNAME"
 echo "    Hostname $IP"
 echo "    Port $SSH_PORT"
 echo "    User agent"
+aptitude update
+aptitude -y upgrade
+aptitude -y dist-upgrade
+aptitude -y full-upgrade
+aptitude -y safe-upgrade
+aptitude -y autoclean
+aptitude -y clean

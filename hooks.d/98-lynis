@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+echo -e "\033[32;40;7m Instalacion Lynis\033[0m"
+sleep 2
+sudo tar xvfz lynis-2.1.1.tar.gz -C /opt/
+cd /opt/lynis
+./lynis -c -Q
