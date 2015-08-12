@@ -7,7 +7,7 @@ fi
 # Server Configuration
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
-HOSTNAME='juegaenlinea.dev'
+HOSTNAME='bastion.dev'
 
 NR_LICENCE=
 
@@ -68,7 +68,7 @@ fi
 ##########
 
 # Install PostGresql
-#. hooks.d/55-postgresql
+. hooks.d/55-postgresql
 
 
 ####
@@ -76,12 +76,15 @@ fi
 ##########
 
 # Install NewRelic
-#. hooks.d/80-newrelic
+. hooks.d/80-newrelic
 
 
 ####
 # Auditorias
 ##########
+# Bastionado
+. hooks.d/90-harden
+
 # Install Lynis
 . hooks.d/98-lynis
 

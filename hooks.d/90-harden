@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+echo -e "\033[32;40;7m Asegurando Recomendaciones Lynis \033[0m"
+echo -e "\033[1;31;40m The database required for 'locate' could not be found \033[0m"
+updatedb
+sleep 1
+
+echo -e "\033[1;31;40m Disable USB storage drivers \033[0m"
+echo "blacklist usb-storage" | sudo tee -a /etc/modprobe.d/blacklist.conf
+sudo update-initramfs -u
+sleep 1
+
+echo -e "\033[1;31;40m Install package apt-show-versions for patch management purposes \033[0m"
+aptitude install -y apt-show-versions
+sleep 1
+
+echo -e "\033[1;31;40m Install debsums utility for the verification of packages with known good database. \033[0m"
+aptitude install -y install debsums
+sleep 1

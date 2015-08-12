@@ -1,5 +1,5 @@
 # ServerBastion
-![Indice Lynis 65](https://img.shields.io/badge/lynis-65-green.png "Indice Lynis 65")
+![Indice Lynis 71](https://img.shields.io/badge/lynis-71-green.png "Indice Lynis 71")
 
 ## Instalación
 ```bash

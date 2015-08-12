@@ -9,7 +9,6 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.hostname = "bastion"
-
     config.vm.network :public_network, ip: "192.168.1.135"
     config.vm.network :forwarded_port, guest: 80, host: 8000,auto_correct: true
 

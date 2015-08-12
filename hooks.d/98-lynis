@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 echo -e "\033[32;40;7m Instalacion Lynis\033[0m"
-aptitude update
-aptitude -y upgrade
-aptitude -y dist-upgrade
-aptitude -y full-upgrade
-aptitude -y safe-upgrade
-aptitude -y autocleanf
-aptitude -y clean
 sleep 2
 curl https://cisofy.com/files/lynis-2.1.1.tar.gz -o lynis.tar.gz
 tar xvfz lynis.tar.gz -C /opt/
