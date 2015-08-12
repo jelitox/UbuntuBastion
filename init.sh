@@ -7,7 +7,7 @@ fi
 # Server Configuration
 REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
-HOSTNAME='bastion.dev'
+HOSTNAME='juegaenlinea.dev'
 
 NR_LICENCE=
 
@@ -15,11 +15,7 @@ PGSQL_USER=""
 PGSQL_PASS=""
 PGSQL_DDBB=""
 
-LOGGLY_ACCOUNT=""
-LOGGLY_USER=""
-LOGGLY_KEY=""
-
-SSH_PORT=""
+SSH_PORT="2021"
 
 
 if [ -f id_rsa ]; then
@@ -45,7 +41,7 @@ fi
 . hooks.d/03-hostname
 
 # Set ssh
-#. hooks.d/04-ssh
+. hooks.d/04-ssh
 
 
 ####
@@ -82,9 +78,6 @@ fi
 # Install NewRelic
 #. hooks.d/80-newrelic
 
-# Install NewRelic
-#. hooks.d/81-loggly
-
 
 ####
 # Auditorias
@@ -93,4 +86,4 @@ fi
 . hooks.d/98-lynis
 
 # Cierre
-#. hooks.d/99-final
+. hooks.d/99-final

@@ -10,5 +10,5 @@ aptitude -y upgrade
 aptitude -y dist-upgrade
 aptitude -y full-upgrade
 aptitude -y safe-upgrade
-aptitude -y autoclean
+aptitude -y autocleanf
 aptitude -y clean
