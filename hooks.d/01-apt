@@ -16,4 +16,4 @@ echo "deb $REPO trusty-backports main restricted universe multiverse" >> /etc/ap
 echo "deb http://security.ubuntu.com/ubuntu trusty-security main universe multiverse" >> /etc/apt/sources.list
 echo "deb http://archive.canonical.com/ubuntu trusty partner" >> /etc/apt/sources.list
 aptitude update
-#aptitude -y full-upgrade
+aptitude -y full-upgrade
