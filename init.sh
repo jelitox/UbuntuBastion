@@ -7,26 +7,25 @@ fi
 # Server Configuration
 REPO='' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
-HOST=bastion.dev
+HOST='bastion.dev'
 
-NR_LICENCE=
+NR_LICENCE=''
 
-PGSQL_USER=""
-PGSQL_PASS=""
-PGSQL_DDBB=""
+PGSQL_USER=''
+PGSQL_PASS=''
+PGSQL_DDBB=''
 
-SSH_PORT=2021
+SSH_PORT='2021'
 
-USERNAME=vagrant
-GROUP=vagrant
+USERNAME='vagrant'
+GROUP='vagrant'
 
-COMPOSER_PAT=
+COMPOSER_PAT=''
 
 if [ -f id_rsa ]; then
 
     if [ ! -d ~/.ssh ]; then
         mkdir ~/.ssh
-
     fi
 
     if [ -f ~/.ssh/id_rsa ]; then
@@ -84,4 +83,25 @@ fi
 # Install Lynis
 . hooks.d/98-lynis
 # Cierre
-. hooks.d/99-final
+
+echo -e "\033[32;40;7m Resultados \033[0m"
+echo -e "\033[31;47;7m Copiar esto a ~./ssh/config \033[0m"
+IP=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
+aptitude update
+aptitude -y upgrade
+aptitude -y dist-upgrade
+aptitude -y full-upgrade
+aptitude -y safe-upgrade
+aptitude -y autoclean
+aptitude -y clean
+apt-get -qq update
+apt-get -qq upgrade
+apt-get -qq dist-upgrade
+apt-get -qq clean
+apt-get -qq autoclean
+apt-get -qq autoremove
+
+echo "Host $HOST"
+echo "    Hostname $IP"
+echo "    Port $SSH_PORT"
+echo "    User agent"
