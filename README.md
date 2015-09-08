@@ -10,7 +10,6 @@ git clone https://github.com/aasanchez/UbuntuBastion.git
 
 ## TODO
 * Add users & groups to server.
-* Set system locale. (Improve).
 * Firewall.
 * Cron Jobs.
 * Setup Apache.
