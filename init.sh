@@ -10,6 +10,7 @@ REPO='' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 HOST=bastion.dev
 
 NR_LICENCE=
+
 PGSQL_USER=""
 PGSQL_PASS=""
 PGSQL_DDBB=""

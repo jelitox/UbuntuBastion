@@ -15,7 +15,7 @@ fi
 if [ -z "$REPO" ]; then
     REPO='mirror://mirrors.ubuntu.com/mirrors.txt'
 fi
-echo -e "\033[32;40;7m Repo: $REPO \033[0m"
+
 echo "deb $REPO trusty main universe multiverse" >> /etc/apt/sources.list
 echo "deb $REPO trusty-updates main universe multiverse" >> /etc/apt/sources.list
 echo "deb $REPO trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
