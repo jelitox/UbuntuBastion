@@ -9,8 +9,7 @@ REPO='' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
 HOST=bastion.dev
 
-NR_LICENCE=5688bd0a93236d73c99eb3275a019f174fc61b5c
-
+NR_LICENCE=
 PGSQL_USER=""
 PGSQL_PASS=""
 PGSQL_DDBB=""
@@ -20,7 +19,7 @@ SSH_PORT=2021
 USERNAME=vagrant
 GROUP=vagrant
 
-COMPOSER_PAT=1068870940c364f76b89b50a80a87aeeed7a16f2
+COMPOSER_PAT=
 
 if [ -f id_rsa ]; then
 
