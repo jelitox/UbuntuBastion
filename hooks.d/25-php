@@ -29,3 +29,10 @@ service php5-fpm restart
 echo -e "\033[1;31;40m Instalacion Composer \033[0m"
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+
+echo "@monthly sudo /usr/local/bin/composer self-update" >> /var/spool/cron/crontabs/$USERNAME
+
+if [ -n "$COMPOSER_PAT" ]; then
+    echo -e "\033[1;31;40m Composer Personal Access Token \033[0m"
+    composer config -g github-oauth.github.com $COMPOSER_PAT
+fi
