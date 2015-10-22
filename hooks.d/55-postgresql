@@ -2,16 +2,16 @@
 echo -e "\033[32;40;7m Instalacion PostGresql Repositorios \033[0m"
 sleep 2
 
-if [ -z "$PGSQL_USER" ]; then
-    $PGSQL_USER='vagrant'
+if [ -z "$DB_USER" ]; then
+    $DB_USER='admin'
 fi
 
-if [ -z "$PGSQL_PASS" ]; then
-    $PGSQL_PASS='vagrant'
+if [ -z "$DB_PASS" ]; then
+    $DB_PASS='admin'
 fi
 
-if [ -z "$PGSQL_DDBB" ]; then
-    $PGSQL_DDBB='vagrant'
+if [ -z "$DB_NAME" ]; then
+    $DB_NAME='master'
 fi
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -

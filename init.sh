@@ -11,9 +11,10 @@ HOST='bastion.dev'
 
 NR_LICENCE=''
 
-PGSQL_USER=''
-PGSQL_PASS=''
-PGSQL_DDBB=''
+DB_NAME=''
+DB_USER=''
+DB_PASS=''
+
 
 SSH_PORT='2021'
 
@@ -83,10 +84,8 @@ fi
 # Install Lynis
 . hooks.d/98-lynis
 # Cierre
-
-echo -e "\033[32;40;7m Resultados \033[0m"
-echo -e "\033[31;47;7m Copiar esto a ~./ssh/config \033[0m"
-IP=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
+echo -e "\033[32;40;7m Limpieza general \033[0m"
+sleep 2
 aptitude update
 aptitude -y upgrade
 aptitude -y dist-upgrade
@@ -100,8 +99,11 @@ apt-get -qq dist-upgrade
 apt-get -qq clean
 apt-get -qq autoclean
 apt-get -qq autoremove
+echo -e "\033[32;40;7m Resultados \033[0m"
+echo -e "\033[31;47;7m Copiar esto a ~./ssh/config \033[0m"
+IP=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
 
 echo "Host $HOST"
 echo "    Hostname $IP"
 echo "    Port $SSH_PORT"
-echo "    User agent"
+echo "    User $USERNAME"
