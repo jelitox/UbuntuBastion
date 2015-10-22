@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+#echo "" > wordpress.sh && sudo chmod +x wordpress.sh && nano wordpress.sh && ./wordpress.sh
 echo -e "\033[32;40;7m Instalacion de NewRelic \033[0m"
 sleep 2
 if [ -z "$DOMAIN" ]; then
-    $DOMAIN = 'ubuntuBastion'
+    DOMAIN = 'ubuntuBastion'
 fi
 if [ -n "$NR_LICENCE" ]; then
     echo deb http://apt.newrelic.com/debian/ newrelic non-free >> /etc/apt/sources.list.d/newrelic.list

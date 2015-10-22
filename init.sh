@@ -73,7 +73,7 @@ fi
 # Install MySQL
 . hooks.d/56-mysql
 
-#. hooks.d/wordpress
+. hooks.d/100-wordpress
 
 ####
 # Analitics

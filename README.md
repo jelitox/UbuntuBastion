@@ -17,7 +17,7 @@ git clone https://github.com/aasanchez/UbuntuBastion.git
 * Configure Ruby versions and gems.
 * Configure Python versions and packages.
 * Install HHVM and choose modules and settings.
-* Install MySQL and create users and databases.
+* ~~Install MySQL and create users and databases.~~
 * Install MariaDB and create users and databases.
 * Install MongoDB and create users and databases.
 * Install Redis.

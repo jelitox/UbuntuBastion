@@ -3,7 +3,7 @@ echo -e "\033[32;40;7m Instalacion PostGresql Repositorios \033[0m"
 sleep 2
 
 if [ -z "$DB_PASS" ]; then
-    $DB_PASS='admin'
+    DB_PASS='admin'
 fi
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -

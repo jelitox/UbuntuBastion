@@ -3,17 +3,16 @@ echo -e "\033[32;40;7m Instalacion MySQL \033[0m"
 sleep 2
 
 if [ -z "$DB_PASS" ]; then
-    $DB_PASS='admin'
+    DB_PASS="admin"
 fi
 
 sudo add-apt-repository -y ppa:ondrej/mysql-5.6
 sudo apt-get update
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $DB_PASS"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DB_PASS"
-
 sudo apt-get install -qq mysql-server-5.6
 
-ed -i "s/bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -i "s/bind-address.*/bind-address=0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 MYSQL=`which mysql`
 
@@ -24,4 +23,3 @@ SQL="${Q1}${Q2}"
 $MYSQL -uroot -p$DB_PASS -e "$SQL"
 
 service mysql restart
-service postgresql restart

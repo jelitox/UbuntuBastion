@@ -28,7 +28,7 @@ aptitude install -y ntp ntpdate
 service apparmor stop
 update-rc.d -f apparmor remove
 aptitude -y remove apparmor apparmor-utils
-sudo useradd -g www-data $USER
+sudo useradd -g www-data ubuntu
 sudo useradd -g www-data root
 
 # Definimos que las actualizaciones de seguridad puedan instalarse automaticamente
