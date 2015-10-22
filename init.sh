@@ -7,7 +7,7 @@ fi
 # Server Configuration
 REPO='' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
-HOST='bastion.dev'
+DOMAIN='bastion.dev'
 
 NR_LICENCE=''
 
@@ -48,7 +48,7 @@ fi
 # Set Hostname
 . hooks.d/03-hostname
 # Set ssh
-. hooks.d/04-ssh
+#. hooks.d/04-ssh
 
 ####
 # Languages
@@ -56,7 +56,7 @@ fi
 # Install PHP
 . hooks.d/25-php
 # Install Node.js
-. hooks.d/26-nodejs
+#. hooks.d/26-nodejs
 
 ####
 # Web Servers
@@ -70,20 +70,26 @@ fi
 # Install PostGresql
 #. hooks.d/55-postgresql
 
+# Install MySQL
+. hooks.d/56-mysql
+
+#. hooks.d/wordpress
+
 ####
 # Analitics
 ##########
 # Install NewRelic
-. hooks.d/80-newrelic
+#. hooks.d/80-newrelic
 
 ####
 # Auditorias
 ##########
 # Bastionado
-. hooks.d/90-harden
+#. hooks.d/90-harden
 # Install Lynis
-. hooks.d/98-lynis
+#. hooks.d/98-lynis
 # Cierre
+
 echo -e "\033[32;40;7m Limpieza general \033[0m"
 sleep 2
 aptitude update
@@ -99,6 +105,7 @@ apt-get -qq dist-upgrade
 apt-get -qq clean
 apt-get -qq autoclean
 apt-get -qq autoremove
+
 echo -e "\033[32;40;7m Resultados \033[0m"
 echo -e "\033[31;47;7m Copiar esto a ~./ssh/config \033[0m"
 IP=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')

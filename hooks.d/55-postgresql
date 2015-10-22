@@ -2,16 +2,8 @@
 echo -e "\033[32;40;7m Instalacion PostGresql Repositorios \033[0m"
 sleep 2
 
-if [ -z "$DB_USER" ]; then
-    $DB_USER='admin'
-fi
-
 if [ -z "$DB_PASS" ]; then
     $DB_PASS='admin'
-fi
-
-if [ -z "$DB_NAME" ]; then
-    $DB_NAME='master'
 fi
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
@@ -22,6 +14,5 @@ aptitude install -y postgresql postgresql-contrib
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/9.4/main/postgresql.conf
 echo "host    all             all             0.0.0.0/0               md5" | sudo tee -a /etc/postgresql/9.4/main/pg_hba.conf
 sudo service postgresql start
-sudo -u postgres createuser -s "$PGSQL_USER"
 sudo -u postgres psql -c "CREATE ROLE root LOGIN UNENCRYPTED PASSWORD '$PGSQL_PASS' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;"
 service postgresql restart

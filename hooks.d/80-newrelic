@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 echo -e "\033[32;40;7m Instalacion de NewRelic \033[0m"
 sleep 2
-if [ -z "$HOST" ]; then
-    $HOST = 'ubuntuBastion'
+if [ -z "$DOMAIN" ]; then
+    $DOMAIN = 'ubuntuBastion'
 fi
 if [ -n "$NR_LICENCE" ]; then
     echo deb http://apt.newrelic.com/debian/ newrelic non-free >> /etc/apt/sources.list.d/newrelic.list
@@ -25,8 +25,8 @@ if [ -n "$NR_LICENCE" ]; then
         sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/fpm/conf.d/newrelic.ini
         sed -i "s/newrelic.license = \"REPLACE_WITH_REAL_KEY\"/newrelic_license=\"$NR_LICENCE\"/g" /etc/php5/cli/conf.d/newrelic.ini
         echo "App name"
-        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOST\"/" /etc/php5/fpm/conf.d/newrelic.ini
-        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$HOST\"/" /etc/php5/cli/conf.d/newrelic.ini
+        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$DOMAIN\"/" /etc/php5/fpm/conf.d/newrelic.ini
+        sed -i "s/newrelic.appname =.*/newrelic.appname = \"$DOMAIN\"/" /etc/php5/cli/conf.d/newrelic.ini
         service php5-fpm restart
     fi
 
@@ -34,7 +34,7 @@ if [ -n "$NR_LICENCE" ]; then
         aptitude install -y nginx-nr-agent
         sed -i "s/newrelic_license_key=YOUR_LICENSE_KEY_HERE/newrelic_license_key=$NR_LICENCE/" /etc/nginx-nr-agent/nginx-nr-agent.ini
         echo "[source1]" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
-        echo "name=$HOST" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
+        echo "name=$DOMAIN" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
         echo "url=http://localhost/nginx_status" >> /etc/nginx-nr-agent/nginx-nr-agent.ini
         service nginx restart
     fi

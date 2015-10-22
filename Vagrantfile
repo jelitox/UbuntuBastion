@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
     end
 
     config.vm.hostname = "bastion"
-    config.vm.network :private_network, ip: "10.10.10.10"
+    config.vm.network :private_network, ip: "10.10.10.11"
     config.vm.network :forwarded_port, guest: 80, host: 8000,auto_correct: true
 
     config.vm.provider :virtualbox do |vb|
@@ -21,4 +21,11 @@ Vagrant.configure(2) do |config|
 
         vb.customize ["guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000]
     end
+
+    config.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update && sudo apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential dbus nano aptitude
+      cd /vagrant && sudo ./init.sh
+    SHELL
+
+
 end
