@@ -27,6 +27,4 @@ Vagrant.configure(2) do |config|
       sudo apt-get update && sudo apt-get install -qq curl unzip git-core ack-grep software-properties-common build-essential dbus nano aptitude
       cd /vagrant && sudo ./init.sh
     SHELL
-
-
 end

@@ -21,5 +21,7 @@ echo "deb $REPO trusty-updates main universe multiverse" >> /etc/apt/sources.lis
 echo "deb $REPO trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb http://security.ubuntu.com/ubuntu trusty-security main universe multiverse" >> /etc/apt/sources.list
 echo "deb http://archive.canonical.com/ubuntu trusty partner" >> /etc/apt/sources.list
+echo -e "\033[1;31;40m Actualizacion en base a los nuevos Repos \033[0m"
+sleep 2
 aptitude update
 aptitude -y full-upgrade

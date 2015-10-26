@@ -22,7 +22,8 @@ chmod -R 755 /var/www/logs
 touch /var/www/logs/access.log
 touch /var/www/logs/error.log
 
-echo -e "\033[35;40;7m Generacion de Certificados SSL (AutoFirmados) \033[0m"
+echo -e "\033[1;31;40m Generacion de Certificados SSL (AutoFirmados) \033[0m"
+sleep 2
 SSL_DIR="/etc/ssl"
 DOMAIN="*.xip.io"
 PASSPHRASE="ubuntubastion"

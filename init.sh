@@ -5,7 +5,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 # Server Configuration
-REPO='' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
+REPO='http://us-east-1.ec2.archive.ubuntu.com/ubuntu/' # http://us-east-1.ec2.archive.ubuntu.com/ubuntu/
 
 DOMAIN='bastion.dev'
 
@@ -56,7 +56,7 @@ fi
 # Install PHP
 . hooks.d/25-php
 # Install Node.js
-#. hooks.d/26-nodejs
+. hooks.d/26-nodejs
 
 ####
 # Web Servers
@@ -68,26 +68,24 @@ fi
 # Database
 ##########
 # Install PostGresql
-#. hooks.d/55-postgresql
+. hooks.d/55-postgresql
 
 # Install MySQL
 . hooks.d/56-mysql
-
-. hooks.d/100-wordpress
 
 ####
 # Analitics
 ##########
 # Install NewRelic
-#. hooks.d/80-newrelic
+. hooks.d/80-newrelic
 
 ####
 # Auditorias
 ##########
 # Bastionado
-#. hooks.d/90-harden
+. hooks.d/90-harden
 # Install Lynis
-#. hooks.d/98-lynis
+. hooks.d/98-lynis
 # Cierre
 
 echo -e "\033[32;40;7m Limpieza general \033[0m"
