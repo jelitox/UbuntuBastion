@@ -14,12 +14,4 @@ sudo apt-get install -qq mysql-server-5.6
 
 sed -i "s/bind-address.*/bind-address=0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
-MYSQL=`which mysql`
-
-Q1="GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$DB_PASS' WITH GRANT OPTION;"
-Q2="FLUSH PRIVILEGES;"
-SQL="${Q1}${Q2}"
-
-$MYSQL -uroot -p$DB_PASS -e "$SQL"
-
 service mysql restart
